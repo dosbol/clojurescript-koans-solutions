@@ -1,6 +1,7 @@
 ClojureScript Koans Lists Answers
 http://clojurescriptkoans.com/#lists/1
 
+
 1)Lists can be expressed by function or a quoted form
 
 (= '(  1 2 3 4 5  ) (list 1 2 3 4 5))
