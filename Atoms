@@ -1,0 +1,33 @@
+ClojureScript Koans Atoms Answers
+http://clojurescriptkoans.com/#atoms/1
+
+
+(def atomic-clock (atom 0))
+
+1)Atoms are references to values
+
+(=  0  (deref atomic-clock))
+
+2)You can get its value more succintly
+
+(=  0  @atomic-clock)
+
+3)You can even change at the swap meet
+
+(=  1  (do (swap! atomic-clock inc) @atomic-clock))
+
+4)Keep taxes out of this: swapping requires no transaction
+
+(= 5 (do  (swap! atomic-clock #(+ % 5))  @atomic-clock))
+
+5)Any number of arguments might happen during a swap
+
+(=  15  (do (swap! atomic-clock + 1 2 3 4 5) @atomic-clock))
+
+6)Atomic atoms are atomic
+
+(=  0  (do (compare-and-set! atomic-clock 100 :fin)@atomic-clock))
+
+7)When your expectations are aligned with reality things, proceed that way
+
+(= :fin (do (compare-and-set!  atomic-clock 0 :fin ) @atomic-clock))
